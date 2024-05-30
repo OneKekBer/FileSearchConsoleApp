@@ -1,8 +1,4 @@
-﻿
-
-
-
-using FileSearch.Engine;
+﻿using FileSearch.Engine;
 using System.Text;
 
 class Program

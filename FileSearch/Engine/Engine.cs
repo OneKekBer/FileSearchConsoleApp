@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileSearch.Engine.SearchCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,6 @@ namespace FileSearch.Engine
                 else
                     Console.WriteLine("Неправильная директория");
             }
-            
         }
 
         public static string GetFileName()
@@ -34,23 +34,27 @@ namespace FileSearch.Engine
             string directory = GetDirectory();
             string fileName = GetFileName();
 
-
             string[] dirs = Directory.GetDirectories(directory);
-
             string[] files = Directory.GetFiles(directory);
 
-            foreach (var item in dirs)
+            SimpleSearch simpleSearchEngine = new SimpleSearch();
+
+            Node rootNode = simpleSearchEngine.CreateNode(directory);
+            simpleSearchEngine.PrintNode(rootNode);
+            Console.WriteLine("---------finded---------");
+            var list = simpleSearchEngine.SearchInNodes(rootNode, fileName);
+
+            if (list.Count == 0)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"there are no files with name:{fileName}");
+                return;
             }
 
-            foreach (var item in files)
+            foreach (string file in list)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(file);
             }
-
 
         }
-
     }
 }
