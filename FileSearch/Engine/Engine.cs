@@ -40,7 +40,7 @@ namespace FileSearch.Engine
             SimpleSearch simpleSearchEngine = new SimpleSearch();
 
             Node rootNode = simpleSearchEngine.CreateNode(directory);
-            simpleSearchEngine.PrintNode(rootNode);
+            //simpleSearchEngine.PrintNode(rootNode);
             Console.WriteLine("---------finded---------");
             var list = simpleSearchEngine.SearchInNodes(rootNode, fileName);
 

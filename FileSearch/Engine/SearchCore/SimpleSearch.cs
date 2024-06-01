@@ -54,7 +54,8 @@ namespace FileSearch.Engine.SearchCore
 
                 foreach (var item in currentNode.Values)
                 {
-                    if (item.ToLower().Contains(searchFile.ToLower()))
+                    var fileName = item.Split("\\")[^1];
+                    if (fileName.ToLower().Contains(searchFile.ToLower()))
                         resList.Add(item);
                 }
 
